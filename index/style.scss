@@ -1,0 +1,673 @@
+// design guideline
+$bgMain: #1e2026;
+$bgLighter: #45474e;
+$bgLightest: #70727a;
+$bgDarker: #101115;
+$bgDarkest: #000000;
+$green: #0ecb81;
+$greenLighter: #61ffb1;
+$greenDarker: 009954;
+$red: #f6465d;
+$redLighter: #ff7c8a;
+$redDarker: #bd0034;
+$primary: #aa8161;
+$primaryLighter: #ddb08f;
+$primaryDarker: #795437;
+
+@font-face {
+  font-family: "interRegular";
+  src: url(./font/Inter-Regular.ttf);
+}
+
+@font-face {
+  font-family: "interBold";
+  src: url(./font/Inter-Bold.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "intreRegular", "Noto Sans TC", sans-serif;
+  user-select: none;
+}
+
+body {
+  background-color: $bgLighter;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: white;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: $primaryLighter;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+h6 {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+p {
+  font-size: 0.75rem;
+}
+
+nav {
+  z-index: 100;
+  background-color: $bgMain;
+  height: 88px;
+  width: 100%;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  .logo {
+    width: 325px;
+    padding-left: 40px;
+  }
+  .navRight {
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+  }
+  a {
+    margin: 2px 24px 0 0;
+    cursor: pointer;
+  }
+  .button {
+    padding: 4px 28px;
+    margin-right: 24px;
+    border: solid 1px $primaryLighter;
+    cursor: pointer;
+    border-radius: 50px;
+    h5 {
+      color: $primaryLighter;
+    }
+    &:hover {
+      background-color: $primaryLighter;
+      h5 {
+        color: black;
+      }
+    }
+  }
+
+  .profilePhoto {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    background-image: url(../img/profilePhotoDemo.jpg);
+    background-size: 100%;
+    cursor: pointer;
+  }
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  aside {
+    height: calc(100% - 88px);
+    position: fixed;
+    margin-top: 88px;
+    background-color: $bgDarker;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15vw;
+    ul {
+      list-style: none;
+      li {
+        cursor: pointer;
+        &:hover {
+          background-color: $bgMain;
+        }
+      }
+      li.active {
+        color: $primary;
+        &:hover {
+          background-color: $bgDarker;
+          cursor: default;
+        }
+      }
+      h5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        border-bottom: solid 1px $bgLightest;
+      }
+      .ulButton {
+        border-top: solid 1px $bgLightest;
+        border-bottom: 0;
+      }
+      li.noneSelect {
+        cursor: default;
+        color: $bgLighter;
+        &:hover {
+          background-color: $bgDarker;
+        }
+      }
+    }
+  }
+
+  section {
+    display: flex;
+    flex: 1 1 1607px;
+    flex-direction: column;
+    margin-left: 15vw;
+
+    .loadingBackground {
+      position: absolute;
+      background-color: #000000;
+      width: 90%;
+      height: 100%;
+      z-index: 7;
+      animation: hideLoadingbg;
+      animation-duration: 3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      @keyframes hideLoadingbg {
+        0% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        99% {
+          opacity: 0;
+          width: 90%;
+        }
+        100% {
+          opacity: 0;
+          width: 0px;
+        }
+      }
+    }
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(35%, -22%);
+      z-index: 8;
+      animation: hideLoading;
+      animation-duration: 2s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      @keyframes hideLoading {
+        0% {
+          opacity: 1;
+        }
+        70% {
+          opacity: 1;
+        }
+        99% {
+          top: 50%;
+          opacity: 0;
+        }
+        100% {
+          top: -50%;
+          opacity: 0;
+        }
+      }
+    }
+    .sectionTop {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 128px 0 40px 0;
+      .news {
+        background-color: $bgDarker;
+        width: 47vw;
+        height: 512px;
+        border-radius: 8px;
+        overflow: hidden;
+        img {
+          object-fit: cover;
+          width: 47vw;
+          height: 512px;
+          z-index: 1;
+        }
+        .newsBtn {
+          display: flex;
+          position: relative;
+          top: -501px;
+          width: 47vw;
+          justify-content: space-between;
+          .btn {
+            height: 512px;
+            color: white;
+            font-size: 40px;
+            text-align: center;
+            z-index: 2;
+            display: flex;
+          }
+
+          #left {
+            align-items: center;
+            padding-left: 24px;
+            padding-right: 50px;
+            background: linear-gradient(
+              to left,
+              rgb(0, 0, 0, 0),
+              rgb(0, 0, 0, 0.5)
+            );
+            h1 {
+              cursor: pointer;
+            }
+          }
+          #right {
+            align-items: center;
+            padding-right: 24px;
+            padding-left: 50px;
+            background: linear-gradient(
+              to right,
+              rgb(0, 0, 0, 0),
+              rgb(0, 0, 0, 0.5)
+            );
+            h1 {
+              cursor: pointer;
+            }
+          }
+        }
+
+        ul {
+          list-style: none;
+          position: relative;
+          margin-top: -32px;
+          display: flex;
+          justify-content: center;
+          z-index: 3;
+        }
+        ul li {
+          width: 16px;
+          height: 16px;
+          margin: 0 4px 0 4px;
+          background-color: $bgLightest;
+          border-radius: 50%;
+        }
+      }
+      .hotCoin {
+        .hideMyChart1 {
+          height: 200px;
+          top: -200px;
+          position: relative;
+          background-color: $bgDarker;
+          animation: hideChart;
+          animation-duration: 2s;
+          animation-iteration-count: 1;
+          animation-delay: 1.5s;
+          left: 0px;
+          animation-fill-mode: forwards;
+          animation-timing-function: ease;
+          @keyframes hideChart {
+            0% {
+              left: 0px;
+            }
+            12.5% {
+              left: 1.725vw;
+            }
+            25% {
+              left: 3.45vw;
+            }
+            37.5% {
+              left: 5.175vw;
+            }
+            50% {
+              left: 6.9vw;
+            }
+            62.5% {
+              left: 8.625vw;
+            }
+            75% {
+              left: 10vw;
+            }
+            87.5% {
+              left: 11.375vw;
+            }
+            100% {
+              left: 13.8vw;
+            }
+          }
+        }
+        h2 {
+          margin-bottom: 16px;
+        }
+        .gridContainer {
+          display: grid;
+          grid-template-columns: auto auto;
+          row-gap: 40px;
+          column-gap: 1.6vw;
+          justify-content: space-between;
+          .hotCoin1,
+          .hotCoin2,
+          .hotCoin3,
+          .hotCoin4 {
+            .setChart {
+              position: relative;
+              top: -25px;
+              height: 120px;
+              z-index: 0;
+            }
+            background-color: $bgDarker;
+            width: 13.8vw;
+            height: 12.8125em;
+            border-radius: 8px;
+            overflow: hidden;
+            h6.title {
+              margin-top: 16px;
+            }
+            h6 {
+              display: flex;
+              align-items: center;
+              color: white;
+            }
+            img {
+              display: flex;
+            }
+            h3 {
+              color: $primaryLighter;
+            }
+            h3,
+            h6 {
+              padding-left: 16px;
+              margin-bottom: 4px;
+              animation: showHotCoin;
+              animation-duration: 2s;
+              animation-iteration-count: 1;
+              animation-fill-mode: forwards;
+              @keyframes showHotCoin {
+                0% {
+                  opacity: 0;
+                }
+                50% {
+                  opacity: 0;
+                }
+                100% {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .sectionButton {
+      display: flex;
+      flex-direction: column;
+
+      .allCoinTitle {
+        display: flex;
+        align-items: center;
+        width: 80vw;
+        margin: 0 auto 16px auto;
+
+        .button {
+          margin: 3.5px 24px 0 24px;
+          padding: 4px 28px;
+          border: solid 1px $primaryLighter;
+          cursor: pointer;
+          border-radius: 50px;
+          h5 {
+            color: $primaryLighter;
+          }
+          &:hover {
+            background-color: $primaryLighter;
+            h5 {
+              color: black;
+            }
+          }
+        }
+        .searchCoin {
+          border: none;
+          background-color: $bgDarker;
+          border-radius: 50px;
+          height: 34px;
+          width: 17vw;
+          letter-spacing: 0.1em;
+          font-size: 18px;
+          padding-left: 20px;
+          color: white;
+          background-image: url("../img/search.svg");
+          background-repeat: no-repeat;
+          background-position: 97% 0.5px;
+        }
+      }
+      .allCoin {
+        background-color: $bgDarker;
+        height: 301px;
+        width: 80vw;
+        border-radius: 8px;
+        margin: auto;
+        color: white;
+        margin-bottom: 38px;
+        overflow: hidden;
+
+        .tableContainer {
+          table.allCoinTableTitle {
+            height: 56px;
+            width: 97.5%;
+            border-collapse: collapse;
+            margin: 0 0 0 0.6vw;
+            border-bottom: 1px solid white;
+            h6 {
+              padding-right: 16px;
+              text-align: right;
+              a img {
+                filter: grayscale(1) sepia(20%) saturate(255%)
+                  hue-rotate(195deg) brightness(26%) contrast(83%);
+                transform: rotateX(180deg);
+              }
+            }
+
+            tr > th:nth-child(1) {
+              width: 4vw;
+            }
+            tr > th:nth-child(2) {
+              width: 10vw;
+              h6 {
+                text-align: left;
+                padding-left: 64px;
+              }
+            }
+            tr > th:nth-child(3) {
+              width: 8vw;
+            }
+            tr > th:nth-child(4) {
+              width: 8vw;
+            }
+            tr > th:nth-child(5) {
+              width: 12vw;
+            }
+            tr > th:nth-child(6) {
+              width: 7vw;
+            }
+            tr > th:nth-child(7) {
+              width: 7vw;
+            }
+            tr > th:nth-child(8) {
+              width: 13vw;
+            }
+            a {
+              cursor: pointer;
+            }
+          }
+        }
+        .tableScrollbar {
+          height: 224px;
+          overflow-y: auto;
+          width: 99.1%;
+          &::-webkit-scrollbar {
+            width: 8px;
+          }
+
+          &::-webkit-scrollbar-track-piece {
+            background: $bgLighter;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: $bgLightest;
+          }
+
+          table#allCoin {
+            border-collapse: collapse;
+            margin: -1px 0.3vw 0 0.5vw;
+            text-align: start;
+            width: calc(100% - 0.8vw);
+            tr {
+              height: 55px;
+              width: 100%;
+              border-top: solid 1px $bgLighter;
+
+              &:hover {
+                background-color: $bgLighter;
+              }
+            }
+            img {
+              margin-top: 6px;
+            }
+
+            tr > td:nth-child(1) {
+              width: 4vw;
+              img {
+                padding-left: 2vw;
+              }
+            }
+
+            tr > td:nth-child(2) {
+              h6 {
+                display: flex;
+                align-items: center;
+                img {
+                  margin: 0 10px 0 32px;
+                }
+              }
+              width: 10vw;
+            }
+
+            tr > td:nth-child(3) {
+              width: 8vw;
+            }
+
+            tr > td:nth-child(4) {
+              width: 8vw;
+            }
+
+            tr > td:nth-child(5) {
+              width: 12vw;
+            }
+
+            tr > td:nth-child(6) {
+              width: 7vw;
+            }
+
+            tr > td:nth-child(7) {
+              width: 7vw;
+            }
+            tr > td:nth-child(8) {
+              width: 13vw;
+            }
+
+            a {
+              padding-left: 8px;
+            }
+          }
+
+          h6 {
+            padding-right: 16px;
+            text-align: right;
+          }
+          button {
+            margin: 0 0 0 4.5vw;
+            padding: 4px 28px;
+            border: solid 1px $primaryLighter;
+            cursor: pointer;
+            border-radius: 50px;
+            background-color: $bgDarker;
+            h5 {
+              color: $primaryLighter;
+            }
+            &:hover {
+              background-color: $primaryLighter;
+              h5 {
+                color: #000000;
+              }
+            }
+            &:active {
+              background-color: $primary;
+              h5 {
+                color: black;
+              }
+              border: solid 1px $primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.container
+  section
+  .sectionButton
+  .allCoin
+  .tableContainer
+  table.allCoinTableTitle
+  h6
+  a
+  img.decrease {
+  filter: invert(52%) sepia(50%) saturate(309%) hue-rotate(344deg)
+    brightness(94%) contrast(89%);
+}
+
+.container
+  section
+  .sectionButton
+  .allCoin
+  .tableContainer
+  table.allCoinTableTitle
+  h6
+  a
+  img.increase {
+  transform: rotateX(0deg);
+  filter: invert(52%) sepia(50%) saturate(309%) hue-rotate(344deg)
+    brightness(94%) contrast(89%);
+}
+
+.star {
+  cursor: pointer;
+}
+.container section {
+  .sectionButton {
+    .allCoinTitle {
+      .clicked {
+        background-color: $primaryLighter;
+        h5 {
+          color: #000000;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="最簡單即時的的虛擬貨幣交易平台" />
+    <meta name="author" content="LaurenChang" />
+    <title>獨角貨幣交易所</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./roulette.scss" />
+    <script src="./confetti-js-master/dist/index.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="../index/index.html" class="logo">
+        <img src="./img/LOGO.svg" alt=""
+      /></a>
+
+      <div class="navRight">
+        <a><img src="./img/alertNone.svg" alt="" /></a>
+        <div class="profilePhoto"></div>
+      </div>
+    </nav>
+    <div class="container">
+      <aside>
+        <ul>
+          <a
+            href="../index/index.html"
+            style="text-decoration: none; color: white"
+            ><li><h5>首頁</h5></li></a
+          >
+          <a
+            href="../dashboard/dashboard.html"
+            style="text-decoration: none; color: white"
+            ><li><h5>交易所</h5></li></a
+          >
+          <li class="noneSelect">
+            <h5>我的錢包(即將開放)</h5>
+          </li>
+        </ul>
+        <ul>
+          <li class="noneSelect">
+            <h5 class="ulButton">關於獨角(即將開放)</h5>
+          </li>
+          <li class="noneSelect">
+            <h5 class="ulButton">設定(即將開放)</h5>
+          </li>
+          <li><h5 class="ulButton">登出</h5></li>
+        </ul>
+      </aside>
+      <section>
+        <h2>點擊畫面開啟遊戲</h2>
+        <div class="loadingBackground"></div>
+        <div class="playGame">
+          <img
+            class="roulette"
+            onclick="start()"
+            src="./img/roulette.svg"
+            alt=""
+          />
+          <img class="rouletteUnicorn" src="./img/rouletteUnicorn.svg" alt="" />
+        </div>
+        <canvas id="confetti"></canvas>
+        <canvas id="confettiMore"></canvas>
+      </section>
+    </div>
+    <script type="text/javascript" src="../dist/index.min.js"></script>
+    <!-- 網頁灑彩帶套件 -->
+    <script type="text/javascript">
+      var canvas1Settings = {
+        target: "confetti",
+        max: "20",
+        size: "1.4",
+        animate: true,
+        props: ["square", "triangle"],
+        colors: [
+          [221, 176, 143],
+          [121, 84, 55],
+          [112, 114, 122],
+        ],
+        clock: "35",
+        rotate: false,
+        width: "1920",
+        height: "1085",
+        start_from_edge: true,
+        respawn: true,
+      };
+      var canvas1 = new ConfettiGenerator(canvas1Settings);
+
+      var canvas2Settings = {
+        target: "confettiMore",
+        max: "80",
+        size: "1.4",
+        animate: true,
+        props: ["square", "triangle"],
+        colors: [
+          [221, 176, 143],
+          [121, 84, 55],
+          [112, 114, 122],
+        ],
+        clock: "35",
+        rotate: false,
+        width: "1920",
+        height: "1085",
+        start_from_edge: true,
+        respawn: true,
+      };
+      var canvas2 = new ConfettiGenerator(canvas2Settings);
+    </script>
+    <script src="./roulette.js"></script>
+  </body>
+</html>

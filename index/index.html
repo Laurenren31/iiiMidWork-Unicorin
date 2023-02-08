@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="最簡單即時的的虛擬貨幣交易平台" />
+    <meta name="author" content="LaurenChang" />
+    <title>獨角貨幣交易所</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.scss" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="../index/index.html" class="logo">
+        <img src="./img/LOGO.svg" alt=""
+      /></a>
+
+      <div class="navRight">
+        <a><img src="./img/alertNone.svg" alt="" /></a>
+        <div class="profilePhoto"></div>
+      </div>
+    </nav>
+    <div class="container">
+      <aside>
+        <ul>
+          <li class="active"><h5>首頁</h5></li>
+          <a
+            href="../dashboard/dashboard.html"
+            style="text-decoration: none; color: white"
+            ><li><h5>交易所</h5></li></a
+          >
+
+          <li class="noneSelect"><h5>我的錢包(即將開放)</h5></li>
+        </ul>
+        <ul>
+          <li class="noneSelect">
+            <h5 class="ulButton">關於獨角(即將開放)</h5>
+          </li>
+          <a href=""></a>
+          <li class="noneSelect"><h5 class="ulButton">設定(即將開放)</h5></li>
+          <li><h5 class="ulButton">登出</h5></li>
+        </ul>
+      </aside>
+      <section>
+        <img
+          src="./img/loadingUnicorn.gif"
+          alt=""
+          class="loading"
+          width="10%"
+          height="auto"
+        />
+        <div class="loadingBackground"></div>
+        <div class="sectionTop">
+          <div class="news" id="news">
+            <img id="pic" src="./img/1.jpg" />
+            <ul id="list">
+              <li class="listLi" style="cursor: pointer"></li>
+              <li class="listLi" style="cursor: pointer"></li>
+              <li class="listLi" style="cursor: pointer"></li>
+            </ul>
+            <div class="newsBtn">
+              <div class="btn" id="left"><h1>&lsaquo;</h1></div>
+              <div class="btn" id="right"><h1>&rsaquo;</h1></div>
+            </div>
+          </div>
+          <div class="hotCoin">
+            <h2>熱門貨幣</h2>
+            <div class="gridContainer">
+              <div class="hotCoin1">
+                <h6 class="title" style="z-index: 6; position: relative">
+                  <img src="./img/coin1.svg" alt="" style="margin-right: 8px" />
+                  UCDT/TWD
+                </h6>
+                <h3 style="z-index: 6; position: relative">32.110</h3>
+                <h6 style="color: #61ffb1; z-index: 6; position: relative">
+                  +0.09%
+                  <img
+                    src="./img/increase.svg"
+                    alt=""
+                    style="margin-left: 8px"
+                    sizes="100%"
+                  />
+                </h6>
+                <div class="setChart">
+                  <canvas
+                    id="myChart1"
+                    style="z-index: 0; position: relative"
+                  ></canvas>
+                </div>
+                <div
+                  class="hideMyChart1"
+                  style="z-index: 3; position: relative"
+                ></div>
+              </div>
+              <div class="hotCoin2">
+                <h6 class="title" style="z-index: 6; position: relative">
+                  <img src="./img/coin2.svg" alt="" style="margin-right: 8px" />
+                  DTC/TWD
+                </h6>
+                <h3 style="z-index: 6; position: relative">623,093</h3>
+                <h6 style="color: #ff7c8a; z-index: 6; position: relative">
+                  -0.54%
+                  <img
+                    src="./img/increase.svg"
+                    alt=""
+                    style="
+                      margin-left: 8px;
+                      transform: rotateX(180deg);
+                      filter: invert(51%) sepia(78%) saturate(380%)
+                        hue-rotate(305deg) brightness(105%) contrast(101%);
+                    "
+                    sizes="100%"
+                  />
+                </h6>
+                <div class="setChart">
+                  <canvas
+                    id="myChart2"
+                    style="z-index: 0; position: relative"
+                  ></canvas>
+                </div>
+                <div
+                  class="hideMyChart1"
+                  style="z-index: 3; position: relative"
+                ></div>
+              </div>
+
+              <div class="hotCoin3">
+                <h6 class="title" style="z-index: 6; position: relative">
+                  <img src="./img/coin5.svg" alt="" style="margin-right: 8px" />
+                  XLD/TWD
+                </h6>
+                <h3 style="z-index: 6; position: relative">75.381</h3>
+                <h6 style="color: #ff7c8a; z-index: 6; position: relative">
+                  -3.44%
+                  <img
+                    src="./img/increase.svg"
+                    alt=""
+                    style="
+                      margin-left: 8px;
+                      transform: rotateX(180deg);
+                      filter: invert(51%) sepia(78%) saturate(380%)
+                        hue-rotate(305deg) brightness(105%) contrast(101%);
+                    "
+                    sizes="100%"
+                  />
+                </h6>
+                <div class="setChart">
+                  <canvas
+                    id="myChart3"
+                    style="z-index: 0; position: relative"
+                  ></canvas>
+                </div>
+                <div
+                  class="hideMyChart1"
+                  style="z-index: 3; position: relative"
+                ></div>
+              </div>
+              <div class="hotCoin4">
+                <h6 class="title" style="z-index: 6; position: relative">
+                  <img src="./img/coin7.svg" alt="" style="margin-right: 8px" />
+                  DDP/TWD
+                </h6>
+                <h3 style="z-index: 6; position: relative">0.004096</h3>
+                <h6 style="color: #61ffb1; z-index: 6; position: relative">
+                  +2.94%
+                  <img
+                    src="./img/increase.svg"
+                    alt=""
+                    style="margin-left: 8px"
+                    sizes="100%"
+                  />
+                </h6>
+                <div class="setChart">
+                  <canvas
+                    id="myChart4"
+                    style="z-index: 0; position: relative"
+                  ></canvas>
+                </div>
+                <div
+                  class="hideMyChart1"
+                  style="z-index: 3; position: relative"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sectionButton">
+          <div class="allCoinTitle">
+            <h2>所有貨幣</h2>
+            <div
+              class="button"
+              id="myCollectionbButton"
+              onclick="onMyCollection()"
+            >
+              <h5>我的收藏</h5>
+            </div>
+            <input
+              type="text"
+              class="searchCoin"
+              placeholder="Search"
+              onkeyup="search()"
+            />
+          </div>
+          <div class="allCoin">
+            <div class="tableContainer">
+              <table class="allCoinTableTitle">
+                <tr>
+                  <th><h6>&thinsp;</h6></th>
+                  <th><h6>名稱</h6></th>
+                  <th id="price">
+                    <h6>
+                      價格
+                      <a onclick="onSortClick('price'); switchIcon('price')" ;>
+                        <img
+                          src="./img/increase.svg"
+                          alt=""
+                          id="sortButtonPrice"
+                        />
+                      </a>
+                    </h6>
+                  </th>
+                  <th>
+                    <h6>
+                      波幅
+                      <a
+                        onclick="onSortClick('upDown'); switchIcon('upDown')"
+                        ;
+                      >
+                        <img
+                          src="./img/increase.svg"
+                          alt=""
+                          id="sortButtonUpDown"
+                        />
+                      </a>
+                    </h6>
+                  </th>
+                  <th>
+                    <h6>
+                      24小時成交量
+                      <a
+                        onclick="onSortClick('volumeIn24Hr');switchIcon('volumeIn24Hr')"
+                      >
+                        <img
+                          src="./img/increase.svg"
+                          alt=""
+                          id="sortButtonVolumeIn24Hr"
+                        />
+                      </a>
+                    </h6>
+                  </th>
+                  <th>
+                    <h6>
+                      最高價
+                      <a
+                        onclick="onSortClick('highestPrice');switchIcon('highestPrice')"
+                      >
+                        <img
+                          src="./img/increase.svg"
+                          alt=""
+                          id="sortButtonHighestPrice"
+                        />
+                      </a>
+                    </h6>
+                  </th>
+                  <th>
+                    <h6>
+                      最低價
+                      <a
+                        onclick="onSortClick('lowestPrice');switchIcon('lowestPrice')"
+                      >
+                        <img
+                          src="./img/increase.svg"
+                          alt=""
+                          id="sortButtonLowestPrice"
+                        />
+                      </a>
+                    </h6>
+                  </th>
+                  <th width="190px"><h6>&thinsp;</h6></th>
+                </tr>
+              </table>
+              <div class="tableScrollbar"><table id="allCoin"></table></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>

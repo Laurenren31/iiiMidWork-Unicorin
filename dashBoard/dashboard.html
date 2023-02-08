@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="最簡單即時的的虛擬貨幣交易平台" />
+    <meta name="author" content="LaurenChang" />
+    <title>獨角貨幣交易所</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style/dashboardStyle.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="./index.html" class="logo">
+        <img src="./img/LOGO.svg" alt=""
+      /></a>
+
+      <div class="navRight">
+        <a href="./game.html" style="text-decoration: none" id="gameButton"
+          ><div class="button"><h5>玩遊戲，抽UCDT</h5></div></a
+        >
+
+        <a><img src="./img/alertNone.svg" alt="" /></a>
+        <div class="profilePhoto"></div>
+      </div>
+    </nav>
+    <div class="container">
+      <aside>
+        <ul>
+          <a href="./index.html" style="text-decoration: none; color: white"
+            ><li><h5>首頁</h5></li></a
+          >
+
+          <li class="active"><h5>交易所</h5></li>
+          <li class="noneSelect"><h5>我的錢包(即將開放)</h5></li>
+        </ul>
+        <ul>
+          <li class="noneSelect">
+            <h5 class="ulButton">關於獨角(即將開放)</h5>
+          </li>
+          <li class="noneSelect"><h5 class="ulButton">設定(即將開放)</h5></li>
+          <li><h5 class="ulButton">登出</h5></li>
+        </ul>
+      </aside>
+      <section>
+        <img
+          src="./img/loadingUnicorn.gif"
+          alt=""
+          class="loading"
+          width="10%"
+          height="auto"
+        />
+        <div class="loadingBackground"></div>
+        <div class="sectionLeft">
+          <div class="sectionLeftTop">
+            <table class="title">
+              <tr class="firstTr">
+                <td rowspan="2" width="341px">
+                  <h2>
+                    <img src="./img/coin1.svg" alt="" width="32px" />UCDT / TWD
+                  </h2>
+                </td>
+                <td width="121px"><h6>價格</h6></td>
+                <td width="132px"><h6>波幅</h6></td>
+                <td width="189px"><h6>24小時成交量</h6></td>
+                <td width="111px"><h6>最高價</h6></td>
+                <td width="207px"><h6>最低價</h6></td>
+                <td rowspan="2" width="32px" id="usdtStar">
+                  <a onclick="onClick(1)">
+                    <img src="./img/starBorder.svg" style="cursor: pointer" />
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td><h6>32.110</h6></td>
+                <td><h6 style="color: #61ffb1">+0.09%</h6></td>
+                <td><h6>5,732,148.48</h6></td>
+                <td><h6>32.110</h6></td>
+                <td><h6>32.050</h6></td>
+              </tr>
+            </table>
+          </div>
+          <div class="sectionLeftMiddle">
+            <div class="allCoinsContainer">
+              <div class="allCoinsTitleContainer">
+                <h4>
+                  所有貨幣
+                  <a
+                    id="collectionbButton"
+                    onclick="onMyCollection()"
+                    style="cursor: pointer"
+                  >
+                    <img src="./img/starBorder.svg" alt="" />
+                  </a>
+                </h4>
+
+                <input
+                  type="text"
+                  class="search"
+                  placeholder="Search"
+                  onkeyup="search()"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="allCoins">
+                <table class="allCoinTitle">
+                  <tr>
+                    <th><h6>&thinsp;</h6></th>
+                    <th>
+                      <h6>市場</h6>
+                    </th>
+                    <th>
+                      <h6>最新價</h6>
+                    </th>
+                  </tr>
+                </table>
+                <div class="allCoinTableScrollbar">
+                  <table id="allCoinTable"></table>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard">
+              <!-- TradingView Widget BEGIN -->
+              <div class="tradingview-widget-container">
+                <div id="tradingview_eb97c"></div>
+                <div class="tradingview-widget-copyright">
+                  <a
+                    href="https://tw.tradingview.com/symbols/USDT/?exchange=CRYPTOCAP"
+                    rel="noopener"
+                    target="_blank"
+                    ><span class="blue-text">USDT圖表</span></a
+                  >由TradingView提供
+                </div>
+                <script
+                  type="text/javascript"
+                  src="https://s3.tradingview.com/tv.js"
+                ></script>
+                <script type="text/javascript">
+                  new TradingView.widget({
+                    width: "47vw",
+                    height: "475px",
+                    symbol: "FX_IDC:USDTWD",
+                    interval: "D",
+                    timezone: "Etc/UTC",
+                    theme: "dark",
+                    style: "8",
+                    locale: "zh_TW",
+                    toolbar_bg: "#f1f3f6",
+                    enable_publishing: false,
+                    hide_top_toolbar: true,
+                    hide_legend: true,
+                    save_image: false,
+                    container_id: "tradingview_eb97c",
+                  });
+                </script>
+              </div>
+              <!-- TradingView Widget END -->
+            </div>
+          </div>
+          <div class="sectionLeftBottom">
+            <div class="newOrder">
+              <h4>最新成交</h4>
+
+              <div class="newOrderInbox">
+                <table class="newOrderTitle">
+                  <tr>
+                    <th><h6>成交時間</h6></th>
+                    <th>
+                      <h6>成交價</h6>
+                    </th>
+                    <th>
+                      <h6>成交量</h6>
+                    </th>
+                  </tr>
+                </table>
+
+                <div class="newOrderTableScrollbar">
+                  <table id="newOrderTable"></table>
+                </div>
+              </div>
+            </div>
+            <div class="nowOrder">
+              <h4>當前訂單</h4>
+              <div class="nowOrderInbox">
+                <table class="nowOrderTitle">
+                  <tr>
+                    <th><h6>&thinsp;</h6></th>
+                    <th><h6>市場</h6></th>
+                    <th>
+                      <h6>類別</h6>
+                    </th>
+                    <th>
+                      <h6>價格</h6>
+                    </th>
+                    <th>
+                      <h6>成交 / 訂單量</h6>
+                    </th>
+                  </tr>
+                </table>
+                <div class="nowOrderTableScrollbar">
+                  <table id="nowOrderTable"></table>
+                </div>
+              </div>
+            </div>
+            <div class="orderSection">
+              <h4>交易面板</h4>
+              <div class="orderSectionInbox">
+                <div class="orderTab">
+                  <button
+                    class="tablinks"
+                    id="defaultOpen"
+                    onclick="openOrder(event, 'limitOrder')"
+                  >
+                    <h6>限價</h6>
+                  </button>
+                  <button
+                    class="tablinks"
+                    onclick="openOrder(event, 'marketOrder')"
+                  >
+                    <h6>市價</h6>
+                  </button>
+                  <button
+                    class="tablinks"
+                    onclick="openOrder(event, 'stopLossOrder')"
+                  >
+                    <h6>停損</h6>
+                  </button>
+                </div>
+                <div id="limitOrder" class="tabcontent">
+                  <label data-t="限價" class="ucdtValueLabel"
+                    ><input
+                      type="number"
+                      value="32.110"
+                      step="0.001"
+                      id="limitUcdtValue"
+                      width="100%"
+                      onkeyup="limitEnterTotal()"
+                      autocomplete="off"
+                      min="0.001"
+                      max="9999999"
+                      required="required"
+                  /></label>
+                  <label data-o="數量" class="orderVolumnLabel"
+                    ><input
+                      type="number"
+                      id="limitOrderVolumn"
+                      onkeyup="limitEnterTotal()"
+                      autocomplete="off"
+                      min="0.001"
+                      step="0.001"
+                      max="9999999"
+                      required="required"
+                  /></label>
+
+                  <div class="rangeTitle">
+                    <div class="rangeTitleLeft"><p>0%</p></div>
+                    <div class="rangeTitleRight"><p>100%</p></div>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="10"
+                    value="0"
+                    class="rangeBottom"
+                    id="limitPriceRange"
+                    oninput="limitColorRangeDot()"
+                    autocomplete="off"
+                    onclick="limitEnterTotal()"
+                  />
+                  <div class="rangeDot">
+                    <button class="rangeDotZero" id="limitRangeZero"></button>
+
+                    <button class="rangeDotOne" id="limitRangeTen">
+                      <p class="tooltip">10%</p>
+                    </button>
+                    <button class="rangeDotTwo" id="limitRangeTwenty">
+                      <p class="tooltip">20%</p>
+                    </button>
+                    <button class="rangeDotThree" id="limitRangeThirty">
+                      <p class="tooltip">30%</p>
+                    </button>
+                    <button class="rangeDotFour" id="limitRangeFourty">
+                      <p class="tooltip">40%</p>
+                    </button>
+                    <button class="rangeDotFive" id="limitRangeFifty">
+                      <p class="tooltip">50%</p>
+                    </button>
+                    <button class="rangeDotSix" id="limitRangeSixty">
+                      <p class="tooltip">60%</p>
+                    </button>
+                    <button class="rangeDotSeven" id="limitRangeSeventy">
+                      <p class="tooltip">70%</p>
+                    </button>
+                    <button class="rangeDotEight" id="limitRangeEighty">
+                      <p class="tooltip">80%</p>
+                    </button>
+                    <button class="rangeDotNine" id="limitRangeNinety">
+                      <p class="tooltip">90%</p>
+                    </button>
+                    <button class="rangeDotTen" id="limitRangeHundred"></button>
+                  </div>
+                  <div id="limitCountBox"><h6>本筆訂單預計成交金額：</h6></div>
+                  <div id="limitTotal"></div>
+                  <div id="limitMoneyType">TWD</div>
+                  <div class="alertArea">
+                    <input type="checkbox" id="limitAlert" autocomplete="off" />
+
+                    <label class="agreeAlert" for="limitAlert"
+                      ><p>
+                        我已同意
+                        <a href="">
+                          <span
+                            style="
+                              color: #ddb08f;
+                              margin-left: -3px;
+                              text-decoration: underline;
+                            "
+                            >交易申請注意事項</span
+                          >
+                        </a>
+                      </p></label
+                    >
+                  </div>
+
+                  <div class="buttonArea">
+                    <button class="buyUcdt" onclick="sendLimitOrderBuy()">
+                      <h5>買入UCDT</h5>
+                    </button>
+                    <button class="saleUcdt" onclick="sendLimitOrderSale()">
+                      <h5>賣出UCDT</h5>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="marketOrder" class="tabcontent">
+                  <label data-t="市價" class="ucdtValueLabel"
+                    ><input
+                      type="number"
+                      value="32.110"
+                      id="marketUcdtValue"
+                      width="100%"
+                      disabled="disabled"
+                      autocomplete="off"
+                  /></label>
+                  <label data-o="數量" class="orderVolumnLabel"
+                    ><input
+                      type="number"
+                      id="marketOrderVolumn"
+                      step="0.001"
+                      onkeyup="marketEnterTotal()"
+                      autocomplete="off"
+                      min="0.001"
+                      max="9999999"
+                      required="required"
+                  /></label>
+
+                  <div class="rangeTitle">
+                    <div class="rangeTitleLeft"><p>0%</p></div>
+                    <div class="rangeTitleRight"><p>100%</p></div>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="10"
+                    value="0"
+                    class="rangeBottom"
+                    id="marketPriceRange"
+                    oninput="marketColorRangeDot()"
+                    autocomplete="off"
+                    onclick="marketEnterTotal()"
+                    ;
+                  />
+                  <div class="rangeDot">
+                    <button class="rangeDotZero" id="marketRangeZero"></button>
+
+                    <button class="rangeDotOne" id="marketRangeTen">
+                      <p class="tooltip">10%</p>
+                    </button>
+                    <button class="rangeDotTwo" id="marketRangeTwenty">
+                      <p class="tooltip">20%</p>
+                    </button>
+                    <button class="rangeDotThree" id="marketRangeThirty">
+                      <p class="tooltip">30%</p>
+                    </button>
+                    <button class="rangeDotFour" id="marketRangeFourty">
+                      <p class="tooltip">40%</p>
+                    </button>
+                    <button class="rangeDotFive" id="marketRangeFifty">
+                      <p class="tooltip">50%</p>
+                    </button>
+                    <button class="rangeDotSix" id="marketRangeSixty">
+                      <p class="tooltip">60%</p>
+                    </button>
+                    <button class="rangeDotSeven" id="marketRangeSeventy">
+                      <p class="tooltip">70%</p>
+                    </button>
+                    <button class="rangeDotEight" id="marketRangeEighty">
+                      <p class="tooltip">80%</p>
+                    </button>
+                    <button class="rangeDotNine" id="marketRangeNinety">
+                      <p class="tooltip">90%</p>
+                    </button>
+                    <button
+                      class="rangeDotTen"
+                      id="marketRangeHundred"
+                    ></button>
+                  </div>
+                  <div id="marketCountBox"><h6>本筆訂單預計成交金額：</h6></div>
+                  <div id="marketTotal"></div>
+                  <div id="marketMoneyType">TWD</div>
+                  <div class="alertArea">
+                    <input
+                      type="checkbox"
+                      id="marketAlert"
+                      autocomplete="off"
+                    />
+
+                    <label class="agreeAlert" for="marketAlert"
+                      ><p>
+                        我已同意
+                        <a href="">
+                          <span
+                            style="
+                              color: #ddb08f;
+                              margin-left: -3px;
+                              text-decoration: underline;
+                            "
+                            >交易申請注意事項</span
+                          >
+                        </a>
+                      </p></label
+                    >
+                  </div>
+
+                  <div class="buttonArea">
+                    <button class="buyUcdt" onclick="sendMarketOrder()">
+                      <h5>買入UCDT</h5>
+                    </button>
+                    <button class="saleUcdt" onclick="sendMarketOrder()">
+                      <h5>賣出UCDT</h5>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="stopLossOrder" class="tabcontent">
+                  <div class="labelInput">
+                    <label data-t="目標" class="ucdtGoalLabel"
+                      ><input
+                        type="number"
+                        id="stopLossUcdtValue"
+                        width="100%"
+                        onkeyup="stopLossEnterTotal()"
+                        autocomplete="off"
+                        step="0.001"
+                        min="0.001"
+                        max="9999999"
+                        required="required"
+                    /></label>
+                    <div class="rangeInput">
+                      <label data-t="停損" class="ucdtUpLossLabel"
+                        ><input
+                          type="number"
+                          id="stopLossLimitUcdtValue"
+                          width="100%"
+                          step="0.001"
+                          min="0.001"
+                          max="9999999"
+                          required="required"
+                          autocomplete="off"
+                      /></label>
+                    </div>
+                  </div>
+
+                  <label data-o="數量" class="orderVolumnLabel"
+                    ><input
+                      type="number"
+                      id="stopLossOrderVolumn"
+                      onkeyup="stopLossEnterTotal()"
+                      autocomplete="off"
+                      step="0.001"
+                      min="0.001"
+                      max="9999999"
+                      required="required"
+                  /></label>
+                  <div class="rangeTitle">
+                    <div class="rangeTitleLeft"><p>0%</p></div>
+                    <div class="rangeTitleRight"><p>100%</p></div>
+                  </div>
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="10"
+                    value="0"
+                    class="rangeBottom"
+                    id="stopLossPriceRange"
+                    oninput="stopLossColorRangeDot()"
+                    autocomplete="off"
+                    onclick="stopLossEnterTotal()"
+                  />
+                  <div class="rangeDot">
+                    <button
+                      class="rangeDotZero"
+                      id="stopLossRangeZero"
+                    ></button>
+
+                    <button class="rangeDotOne" id="stopLossRangeTen">
+                      <p class="tooltip">10%</p>
+                    </button>
+                    <button class="rangeDotTwo" id="stopLossRangeTwenty">
+                      <p class="tooltip">20%</p>
+                    </button>
+                    <button class="rangeDotThree" id="stopLossRangeThirty">
+                      <p class="tooltip">30%</p>
+                    </button>
+                    <button class="rangeDotFour" id="stopLossRangeFourty">
+                      <p class="tooltip">40%</p>
+                    </button>
+                    <button class="rangeDotFive" id="stopLossRangeFifty">
+                      <p class="tooltip">50%</p>
+                    </button>
+                    <button class="rangeDotSix" id="stopLossRangeSixty">
+                      <p class="tooltip">60%</p>
+                    </button>
+                    <button class="rangeDotSeven" id="stopLossRangeSeventy">
+                      <p class="tooltip">70%</p>
+                    </button>
+                    <button class="rangeDotEight" id="stopLossRangeEighty">
+                      <p class="tooltip">80%</p>
+                    </button>
+                    <button class="rangeDotNine" id="stopLossRangeNinety">
+                      <p class="tooltip">90%</p>
+                    </button>
+                    <button
+                      class="rangeDotTen"
+                      id="stopLossRangeHundred"
+                    ></button>
+                  </div>
+                  <div id="stopLossCountBox">
+                    <h6>本筆訂單預計成交金額：</h6>
+                  </div>
+                  <div id="stopLossTotal"></div>
+                  <div id="stopLossMoneyType">TWD</div>
+                  <div class="alertArea">
+                    <input
+                      type="checkbox"
+                      id="stopLossAlert"
+                      autocomplete="off"
+                    />
+
+                    <label class="agreeAlert" for="stopLossAlert"
+                      ><p>
+                        我已同意
+                        <a href="">
+                          <span
+                            style="
+                              color: #ddb08f;
+                              margin-left: -3px;
+                              text-decoration: underline;
+                            "
+                            >交易申請注意事項</span
+                          >
+                        </a>
+                      </p></label
+                    >
+                  </div>
+
+                  <div class="buttonArea">
+                    <button class="buyUcdt" onclick="sendStopLossOrderBuy()">
+                      <h5>買入UCDT</h5>
+                    </button>
+                    <button class="saleUcdt" onclick="sendStopLossOrderSale()">
+                      <h5>賣出UCDT</h5>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sectionRight">
+          <table class="nowOrderListTitle">
+            <tr>
+              <th><h6>價格</h6></th>
+              <th>
+                <h6>數量</h6>
+              </th>
+              <th>
+                <h6>總價</h6>
+              </th>
+            </tr>
+          </table>
+          <table id="nowOrderListHigher"></table>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListHigherBg"></div>
+          <div class="nowOrderListPrice">
+            <h2>32.110</h2>
+            <img src="./img/increaseBig.svg" alt="" />
+          </div>
+          <table id="nowOrderListLower"></table>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+          <div class="nowOrderListLowerBg"></div>
+        </div>
+      </section>
+    </div>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

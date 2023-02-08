@@ -1,0 +1,193 @@
+// design guideline
+$bgMain: #1e2026;
+$bgLighter: #45474e;
+$bgLightest: #70727a;
+$bgDarker: #101115;
+$bgDarkest: #000000;
+$green: #0ecb81;
+$greenLighter: #61ffb1;
+$greenDarker: 009954;
+$red: #f6465d;
+$redLighter: #ff7c8a;
+$redDarker: #bd0034;
+$primary: #aa8161;
+$primaryLighter: #ddb08f;
+$primaryDarker: #795437;
+
+@font-face {
+  font-family: "interRegular";
+  src: url(./font/Inter-Regular.ttf);
+}
+
+@font-face {
+  font-family: "interBold";
+  src: url(./font/Inter-Bold.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "intreRegular", "Noto Sans TC", sans-serif;
+  user-select: none;
+}
+
+body {
+  background-color: $bgLighter;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: white;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: $primaryLighter;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 1.125rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+h6 {
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+p {
+  font-size: 0.75rem;
+}
+nav {
+  z-index: 100;
+  background-color: $bgMain;
+  height: 88px;
+  width: 100vw;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  .logo {
+    width: 325px;
+    padding-left: 40px;
+  }
+  .navRight {
+    display: flex;
+    align-items: center;
+    padding-right: 40px;
+  }
+  a {
+    margin: 2px 24px 0 0;
+    cursor: pointer;
+  }
+  .button {
+    padding: 4px 28px;
+    margin-right: 24px;
+    border: solid 1px $primaryLighter;
+    cursor: pointer;
+    border-radius: 50px;
+    h5 {
+      color: $primaryLighter;
+    }
+    &:hover {
+      background-color: $primaryLighter;
+      h5 {
+        color: black;
+      }
+    }
+  }
+
+  .profilePhoto {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    background-image: url(../img/profilePhotoDemo.jpg);
+    background-size: 100%;
+    cursor: pointer;
+  }
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+
+  aside {
+    height: calc(100% - 88px);
+    position: fixed;
+    margin-top: 88px;
+    background-color: $bgDarker;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15vw;
+    ul {
+      list-style: none;
+      li {
+        cursor: pointer;
+        &:hover {
+          background-color: $bgMain;
+        }
+      }
+      li.active {
+        color: $primary;
+        &:hover {
+          background-color: $bgDarker;
+          cursor: default;
+        }
+      }
+      h5 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        border-bottom: solid 1px $bgLightest;
+      }
+      .ulButton {
+        border-top: solid 1px $bgLightest;
+        border-bottom: 0;
+      }
+      li.noneSelect {
+        cursor: default;
+        color: $bgLighter;
+        &:hover {
+          background-color: $bgDarker;
+        }
+      }
+    }
+  }
+
+  section {
+    display: flex;
+    flex: 1 1 1607px;
+    flex-direction: column;
+    margin-left: 15vw;
+
+    .notFinish {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        width: 515px;
+        padding: 246px 0 50px 0;
+      }
+      h2 {
+        text-align: center;
+        color: $bgDarker;
+      }
+    }
+  }
+}
