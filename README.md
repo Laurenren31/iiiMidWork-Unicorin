@@ -1,7 +1,7 @@
 # iiiMidWork-Unicorin
 
 ![image](https://github.com/Laurenren31/iiiMidWork-Unicorin/blob/main/unicoinHeadPic.png)
-* 在資策會上課時的個中單人前端作業，製作的是以獨角獸為主題的「虛擬」虛擬貨幣交易平台
+* 在資策會上課時的個人前端作業，製作的是以獨角獸為主題的「虛擬」虛擬貨幣交易平台
 * 這個作業是以畫面練習為主，因此數值都非實際撈資料的結果，而是亂數模擬生成的
 * 開發使用 VS CODE 撰寫 HTML / SCSS / 原生JS
 
