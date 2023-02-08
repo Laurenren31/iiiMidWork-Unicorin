@@ -23,3 +23,4 @@
 網頁DEMO
 --
 https://unicorin.netlify.app/
+*此網站未製作響應式版本，最佳閱覽解析度為1920*1080
